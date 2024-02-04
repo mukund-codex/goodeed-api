@@ -1,0 +1,49 @@
+version: '3'
+services:
+
+    #API Server
+    goodeed-api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: goodeed-api
+        depends_on:
+            - goodeed-api-pg
+        volumes:
+            - .:/var/www/html
+        restart: always
+        ports:
+            - "2004:80"
+        networks:
+            goodeed-api-network:
+                ipv4_address: 23.23.1.1
+        extra_hosts:
+            - host.docker.internal:host-gateway
+
+
+    #Database Server
+    goodeed-api-pg:
+        image: postgres:15
+        container_name: goodeed-api-pg
+        volumes:
+            - goodeed-api-pg-disk:/var/lib/postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: testing
+        ports:
+            - "2003:5432"
+        networks:
+            goodeed-api-network:
+                ipv4_address: 23.23.1.2
+
+volumes:
+    goodeed-api-pg-disk: {}
+
+
+networks:
+    goodeed-api-network:
+        ipam:
+            driver: default
+            config:
+                - subnet: 23.23.0.0/16
