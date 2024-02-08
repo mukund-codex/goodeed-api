@@ -45,7 +45,9 @@ Route::prefix('v1')->group(function () {
         // Logout
         Route::post('logout', [UserController::class, 'logout'])->name('user.logout');
 
-        //User's Restaurant
+        //Restaurant
         Route::get('restaurants', [RestaurantController::class, 'list'])->name('rest.list');
+        Route::post('restaurants', [RestaurantController::class, 'create'])->name('rest.create');
+        Route::put('restaurants/{id}', [RestaurantController::class, 'update'])->name('rest.update');
     });
 });

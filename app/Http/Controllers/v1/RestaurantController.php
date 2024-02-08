@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Restaurant\AddRestaurantRequest;
+use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
 use App\Http\Traits\ApiResponseTrait;
 use App\Repositories\Restaurant\RestaurantRespository;
 use Illuminate\Http\JsonResponse;
@@ -30,4 +32,23 @@ class RestaurantController extends Controller
         );
     }
 
+    public function create(AddRestaurantRequest $request): JsonResponse
+    {
+        $restaurant = $this->restaurant->create($request->validated());
+        return $this->showSuccessResponse(
+          $restaurant,
+          __('messages.restaurant.create.success'),
+          Response::HTTP_CREATED
+        );
+    }
+
+    public function update(UpdateRestaurantRequest $request): JsonResponse
+    {
+        $restaurant = $this->restaurant->update($request->validated());
+        return $this->showSuccessResponse(
+          $restaurant,
+          __('messages.restaurant.update.success'),
+          Response::HTTP_OK
+        );
+    }
 }

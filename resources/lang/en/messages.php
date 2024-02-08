@@ -19,7 +19,11 @@ $messages = [
         'list' => [
             'success' => 'Restaurant fetched successfully',
             'failed' => 'Failed to fetch restaurants'
-        ]
+        ],
+        'create' => [
+            'success' => 'Restaurant added successfully',
+            'failed' => 'Failed to add restaurant'
+        ],
     ],
     'address' => [
         'add' => [
@@ -116,7 +120,30 @@ $messages = [
                 'integer' => 'Address id should be numeric',
                 'exists' => 'Invalid address id',
             ],
-        ]
+        ],
+        'restaurant' => [
+            'name' => [
+                'required' => 'Restaurant name is required',
+                'string' => 'Restaurant name should be string',
+                'max' => 'Restaurant name should be less than 255 characters',
+            ],
+            'address' => [
+                'required' => 'Restaurant address is required',
+                'string' => 'Restaurant address should be string',
+                'max' => 'Restaurant address should be less than 255 characters',
+            ],
+            'phone' => [
+                'required' => 'Restaurant phone is required',
+                'string' => 'Restaurant phone should be string',
+                'max' => 'Restaurant phone should be less than 255 characters',
+            ],
+            'email' => [
+                'required' => 'Restaurant email is required',
+                'string' => 'Restaurant email should be string',
+                'email' => 'Invalid restaurant email format',
+                'max' => 'Restaurant email should be less than 255 characters',
+            ],
+        ],
     ],
 ];
 

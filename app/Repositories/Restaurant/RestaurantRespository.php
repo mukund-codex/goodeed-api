@@ -23,4 +23,16 @@ class RestaurantRespository implements RestaurantInterface
             ->get();
     }
 
+    public function create(array $data): Restaurant
+    {
+        return $this->restaurant->create($data);
+    }
+
+    public function update(array $data): Restaurant
+    {
+        $restaurant = $this->restaurant->find($data['id']);
+        $restaurant->update($data);
+        return $restaurant;
+    }
+
 }
