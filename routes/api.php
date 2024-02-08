@@ -49,5 +49,11 @@ Route::prefix('v1')->group(function () {
         Route::get('restaurants', [RestaurantController::class, 'list'])->name('rest.list');
         Route::post('restaurants', [RestaurantController::class, 'create'])->name('rest.create');
         Route::put('restaurants/{id}', [RestaurantController::class, 'update'])->name('rest.update');
+
+        //Dishes
+        Route::get('dishes', [RestaurantController::class, 'listDishes'])->name('dishes.list');
+        Route::post('dishes', [RestaurantController::class, 'createDishes'])->name('dishes.create');
+        Route::put('dishes/{id}', [RestaurantController::class, 'updateDishes'])->name('dishes.update');
+        Route::get('dishes/{id}', [RestaurantController::class, 'getDishes'])->name('dishes.get');
     });
 });
