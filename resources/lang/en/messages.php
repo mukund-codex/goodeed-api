@@ -144,6 +144,39 @@ $messages = [
                 'max' => 'Restaurant email should be less than 255 characters',
             ],
         ],
+        'dishes' => [
+            'id' => [
+                'required' => 'Restaurant id is required',
+                'integer' => 'Restaurant id should be numeric',
+                'exists' => 'Invalid restaurant id',
+            ],
+            'name' => [
+                'required' => 'Dish name is required',
+                'string' => 'Dish name should be string',
+                'max' => 'Dish name should be less than 255 characters',
+            ],
+            'description' => [
+                'required' => 'Dish description is required',
+                'string' => 'Dish description should be string',
+                'max' => 'Dish description should be less than 255 characters',
+            ],
+            'price' => [
+                'required' => 'Dish price is required',
+                'numeric' => 'Dish price should be numeric',
+            ],
+            'is_active' => [
+                'required' => 'Dish status is required',
+                'boolean' => 'Dish status should be boolean',
+            ],
+            'is_veg' => [
+                'required' => 'Dish type is required',
+                'boolean' => 'Dish type should be boolean',
+            ],
+            'discount_price' => [
+                'nullable' => 'Dish discount price should be nullable',
+                'numeric' => 'Dish discount price should be numeric',
+            ],
+        ],
     ],
 ];
 
