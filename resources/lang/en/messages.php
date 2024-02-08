@@ -15,6 +15,12 @@ $messages = [
             'failure' => 'User profile update failed',
         ],
     ],
+    'restaurant' => [
+        'list' => [
+            'success' => 'Restaurant fetched successfully',
+            'failed' => 'Failed to fetch restaurants'
+        ]
+    ],
     'address' => [
         'add' => [
             'success' => 'Address added successfully',

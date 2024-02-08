@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Models\Address;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Address\AddressInterface;
 use App\Repositories\Address\AddressRepository;
+use App\Repositories\Restaurant\RestaurantInterface;
+use App\Repositories\Restaurant\RestaurantRespository;
 use App\Repositories\User\UserInterface;
 use App\Repositories\User\UserRepository;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -20,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserInterface::class, UserRepository::class);
         $this->app->singleton(AddressInterface::class, AddressRepository::class);
+        $this->app->singleton(RestaurantInterface::class, RestaurantRespository::class);
     }
 
     /**
@@ -30,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'user' => User::class,
             'address' => Address::class,
+            'restaurant' => Restaurant::class
         ]);
     }
 }

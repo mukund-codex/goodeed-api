@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\v1\AddressController;
+use App\Http\Controllers\v1\RestaurantController;
 use App\Http\Controllers\v1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +44,8 @@ Route::prefix('v1')->group(function () {
 
         // Logout
         Route::post('logout', [UserController::class, 'logout'])->name('user.logout');
+
+        //User's Restaurant
+        Route::get('restaurants', [RestaurantController::class, 'list'])->name('rest.list');
     });
 });
