@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Address;
+use App\Models\Dishes;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Address\AddressInterface;
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(UserInterface::class, UserRepository::class);
         $this->app->singleton(AddressInterface::class, AddressRepository::class);
         $this->app->singleton(RestaurantInterface::class, RestaurantRespository::class);
+        $this->app->singleton('DishesInterface', 'DishesRepository::class');
     }
 
     /**
@@ -34,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'user' => User::class,
             'address' => Address::class,
-            'restaurant' => Restaurant::class
+            'restaurant' => Restaurant::class,
+            'dishes' => Dishes::class,
         ]);
     }
 }
