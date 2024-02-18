@@ -65,6 +65,24 @@ $messages = [
             'failure' => 'Address fetch failed',
         ],
     ],
+    'orders' => [
+        'list' => [
+            'success' => 'Orders fetched successfully',
+            'failure' => 'Orders fetch failed',
+        ],
+        'create' => [
+            'success' => 'Order created successfully',
+            'failure' => 'Order creation failed',
+        ],
+        'update' => [
+            'success' => 'Order updated successfully',
+            'failure' => 'Order update failed',
+        ],
+        'get' => [
+            'success' => 'Order fetched successfully',
+            'failure' => 'Order fetch failed',
+        ],
+    ],
     'otp' => [
         'success' => 'OTP verified successfully',
         'failure' => 'OTP verification failed',

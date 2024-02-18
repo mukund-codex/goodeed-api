@@ -12,4 +12,8 @@ interface  OrderInterface
 
     public function create(array $request): Order;
 
+    public function update(array $request): Order;
+
+    public function getOrder(int $id): Order;
+
 }

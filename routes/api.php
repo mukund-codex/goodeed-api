@@ -59,9 +59,9 @@ Route::prefix('v1')->group(function () {
         Route::get('dishes/{id}', [DishesController::class, 'getDishes'])->name('dishes.get');
 
         //Orders
-        Route::get('orders', [OrderController::class, 'listOrders'])->name('orders.list');
-        Route::post('orders', [OrderController::class, 'createOrders'])->name('orders.create');
-        Route::put('orders/{id}', [OrderController::class, 'updateOrders'])->name('orders.update');
-        Route::get('orders/{id}', [OrderController::class, 'getOrders'])->name('orders.get');
+        Route::get('orders', [OrderController::class, 'list'])->name('orders.list');
+        Route::post('orders', [OrderController::class, 'create'])->name('orders.create');
+        Route::put('orders/{id}', [OrderController::class, 'update'])->name('orders.update');
+        Route::get('orders/{id}', [OrderController::class, 'getOrder'])->name('orders.get');
     });
 });
