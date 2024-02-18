@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DishesController;
 use App\Http\Controllers\v1\AddressController;
+use App\Http\Controllers\v1\OrderController;
 use App\Http\Controllers\v1\RestaurantController;
 use App\Http\Controllers\v1\UserController;
 use Illuminate\Http\Request;
@@ -51,9 +53,15 @@ Route::prefix('v1')->group(function () {
         Route::put('restaurants/{id}', [RestaurantController::class, 'update'])->name('rest.update');
 
         //Dishes
-        Route::get('dishes', [RestaurantController::class, 'listDishes'])->name('dishes.list');
-        Route::post('dishes', [RestaurantController::class, 'createDishes'])->name('dishes.create');
-        Route::put('dishes/{id}', [RestaurantController::class, 'updateDishes'])->name('dishes.update');
-        Route::get('dishes/{id}', [RestaurantController::class, 'getDishes'])->name('dishes.get');
+        Route::get('dishes/list/{id}', [DishesController::class, 'list'])->name('dishes.list');
+        Route::post('dishes', [DishesController::class, 'create'])->name('dishes.create');
+        Route::put('dishes/{id}', [DishesController::class, 'update'])->name('dishes.update');
+        Route::get('dishes/{id}', [DishesController::class, 'getDishes'])->name('dishes.get');
+
+        //Orders
+        Route::get('orders', [OrderController::class, 'listOrders'])->name('orders.list');
+        Route::post('orders', [OrderController::class, 'createOrders'])->name('orders.create');
+        Route::put('orders/{id}', [OrderController::class, 'updateOrders'])->name('orders.update');
+        Route::get('orders/{id}', [OrderController::class, 'getOrders'])->name('orders.get');
     });
 });

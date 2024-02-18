@@ -24,22 +24,22 @@ class DishesController extends Controller
 
     public function list(ListDishesRequest $request): JsonResponse
     {
-        $dishes = $this->dishesRepository->list($request->validated());
-        return $this->showSuccessResponse($dishes, __('messages.success.listing'), 200);
+        $dishes = $this->dishesRepository->list($request->validated('restaurant_id'));
+        return $this->showSuccessResponse($dishes, __('messages.dishes.list.success'), 200);
     }
 
     public function create(AddDishesRequest $request): JsonResponse
     {
         $data = $request->validated();
         $dishes = $this->dishesRepository->create($data);
-        return $this->showSuccessResponse($dishes, __('messages.success.created'), 200);
+        return $this->showSuccessResponse($dishes, __('messages.dishes.create.success'), 200);
     }
 
     public function update(UpdateDishesRequest $request): JsonResponse
     {
         $data = $request->validated();
         $dishes = $this->dishesRepository->update($data);
-        return $this->showSuccessResponse($dishes, __('messages.success.updated'), 200);
+        return $this->showSuccessResponse($dishes, __('messages.dishes.update.success'), 200);
     }
 
     public function getDishes(GetDishesRequest $request): JsonResponse

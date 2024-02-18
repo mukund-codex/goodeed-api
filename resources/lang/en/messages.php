@@ -24,6 +24,28 @@ $messages = [
             'success' => 'Restaurant added successfully',
             'failed' => 'Failed to add restaurant'
         ],
+        'update' => [
+            'success' => 'Restaurant updated successfully',
+            'failed' => 'Failed to update restaurant'
+        ],
+    ],
+    'dishes' => [
+        'list' => [
+            'success' => 'Dishes fetched successfully',
+            'failed' => 'Failed to fetch dishes'
+        ],
+        'create' => [
+            'success' => 'Dish added successfully',
+            'failed' => 'Failed to add dish'
+        ],
+        'update' => [
+            'success' => 'Dish updated successfully',
+            'failed' => 'Failed to update dish'
+        ],
+        'get' => [
+            'success' => 'Dish fetched successfully',
+            'failed' => 'Failed to fetch dish'
+        ],
     ],
     'address' => [
         'add' => [

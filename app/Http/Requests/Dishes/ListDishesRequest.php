@@ -3,20 +3,20 @@
 namespace App\Http\Requests\Dishes;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ListDishesRequest extends FormRequest
 {
-    protected function prepareForValidation(): void
+    public function __construct(Request $request)
     {
-        $this->merge([
-            'id' => (int) $this->route('id'),
-        ]);
+        parent::__construct();
+        $request->merge(['restaurant_id' => (int) $request->route('id')]);
     }
 
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:restaurants,id',
+            'restaurant_id' => 'required|integer|exists:restaurants,id',
         ];
     }
 

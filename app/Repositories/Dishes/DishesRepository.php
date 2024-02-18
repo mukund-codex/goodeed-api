@@ -4,6 +4,7 @@ namespace App\Repositories\Dishes;
 
 use App\Models\Dishes;
 use App\Repositories\Restaurant\RestaurantInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class DishesRepository implements DishesInterface
 {
@@ -13,7 +14,7 @@ class DishesRepository implements DishesInterface
         $this->dishes = $dishes;
     }
 
-    public function list(int $id): Dishes
+    public function list(int $id): Collection
     {
         return $this->dishes->where('restaurant_id', $id)
             ->where('is_active', 1)->where('verified', 1)
@@ -27,7 +28,9 @@ class DishesRepository implements DishesInterface
 
     public function update(array $input): Dishes
     {
-        return $this->dishes->where('id', $input['id'])->update($input);
+        $dishes = $this->dishes->where('id', $input['id'])->first();
+        $dishes->update($input);
+        return $dishes;
     }
 
     public function getDishes(array $input): Dishes

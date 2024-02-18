@@ -11,7 +11,7 @@ class AddRestaurantRequest extends FormRequest
         return [
             'name' => 'required|string',
             'address' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|numeric|digits:10',
             'email' => 'required|email',
         ];
     }

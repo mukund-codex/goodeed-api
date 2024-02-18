@@ -25,6 +25,6 @@ class UpdateRestaurantRequest extends FormRequest
 
     public function messages(): array
     {
-        return trans('messages.validation');
+        return trans('messages.validation.dishes');
     }
 }
