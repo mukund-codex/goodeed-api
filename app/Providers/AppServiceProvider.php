@@ -7,6 +7,7 @@ use App\Models\Dishes;
 use App\Models\Order;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Models\Vendor;
 use App\Repositories\Address\AddressInterface;
 use App\Repositories\Address\AddressRepository;
 use App\Repositories\Restaurant\RestaurantInterface;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(RestaurantInterface::class, RestaurantRespository::class);
         $this->app->singleton('DishesInterface', 'DishesRepository::class');
         $this->app->singleton('OrderInterface', 'OrderRepository::class');
+        $this->app->singleton('VendorInterface', 'VendorRepository::class');
     }
 
     /**
@@ -40,7 +42,8 @@ class AppServiceProvider extends ServiceProvider
             'address' => Address::class,
             'restaurant' => Restaurant::class,
             'dishes' => Dishes::class,
-            'order' => Order::class
+            'order' => Order::class,
+            'vendor' => Vendor::class
         ]);
     }
 }
