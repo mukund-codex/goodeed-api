@@ -30,12 +30,13 @@ class UserRepository implements UserInterface
             $user = $this->user->create([
                 'mobile_number' => $data['mobile_number'],
                 'otp' => $otp,
-                'token' => Str::random(60)
+                'token' => Str::random(60),
+                'type' => config('constants.USER_TYPE.CUSTOMER')
             ]);
         }
 
         $user->token = $user->createToken(config('constants.TOKEN.WEB'))->plainTextToken;
-        $user->type = config('constants.TOKEN_TYPE.BEARER');
+        $user->token_type = config('constants.TOKEN_TYPE.BEARER');
 
 //        SMSHelper::class::sendSMS($request->mobile_number, $otp);
 
