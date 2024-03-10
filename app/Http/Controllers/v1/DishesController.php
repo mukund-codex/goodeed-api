@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Dishes\AddDishesRequest;
 use App\Http\Requests\Dishes\GetDishesRequest;
 use App\Http\Requests\Dishes\ListDishesRequest;
 use App\Http\Requests\Dishes\UpdateDishesRequest;
 use App\Http\Traits\ApiResponseTrait;
 use App\Repositories\Dishes\DishesRepository;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DishesController extends Controller
