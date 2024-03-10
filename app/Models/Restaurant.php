@@ -20,7 +20,8 @@ class Restaurant extends Model
         'email',
         'is_active',
         'verified',
-        'verified_at'
+        'verified_at',
+        'vendor_id'
     ];
 
     protected $casts = [
