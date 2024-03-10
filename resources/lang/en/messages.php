@@ -87,6 +87,16 @@ $messages = [
         'success' => 'OTP verified successfully',
         'failure' => 'OTP verification failed',
     ],
+    'vendor' => [
+        'login' => [
+            'success' => 'Vendor logged in successfully',
+            'failure' => 'Vendor login failed',
+        ],
+        'otp' => [
+            'verified' => 'OTP verified successfully',
+            'failed' => 'OTP verification failed',
+        ],
+    ],
     'validation' => [
         'mobile_number' => [
             'required' => 'Mobile number is required',
@@ -153,6 +163,10 @@ $messages = [
         ],
         'is_default' => [
             'boolean' => 'Invalid is default',
+        ],
+        'status' => [
+            'required' => 'Status is required',
+            'boolean' => 'Invalid status',
         ],
         'address' => [
             'id' => [
