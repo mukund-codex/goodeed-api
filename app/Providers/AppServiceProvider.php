@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Address;
+use App\Models\Admin;
 use App\Models\Dishes;
 use App\Models\Order;
 use App\Models\Restaurant;
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('DishesInterface', 'DishesRepository::class');
         $this->app->singleton('OrderInterface', 'OrderRepository::class');
         $this->app->singleton('VendorInterface', 'VendorRepository::class');
+        $this->app->singleton('AdminInterface', 'AdminRepository::class');
     }
 
     /**
@@ -43,7 +45,8 @@ class AppServiceProvider extends ServiceProvider
             'restaurant' => Restaurant::class,
             'dishes' => Dishes::class,
             'order' => Order::class,
-            'vendor' => Vendor::class
+            'vendor' => Vendor::class,
+            'admin' => Admin::class,
         ]);
     }
 }
