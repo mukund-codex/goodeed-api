@@ -67,7 +67,7 @@ Route::prefix('v1')->group(function () {
         Route::post('login', [VendorController::class, 'login'])->name('vendor.login');
 
         Route::middleware(['auth:sanctum'])->group(function () {
-            Route::post('verify-otp', [VendorController::class, 'verifyOtp'])->name('vendor.verify-otp');
+            Route::post('verify-otp', [VendorController::class, 'verifyOtp'])->name('vendors.verify-otp');
         });
 
     });
