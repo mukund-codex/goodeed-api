@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('password')->nullable();
-            $table->string('mobile_number')->unique();
+            $table->string('mobile_number')->nullable()->unique();
             $table->string('otp')->nullable();
             $table->timestamp('otp_verified_at')->nullable();
             $table->string('image')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('is_active')->default(true);
             $table->string('is_deleted')->default(false);
             $table->string('is_blocked')->default(false);
-            $table->enum('type', ['customer', 'restaurant','admin'])->default('restaurant');
+            $table->enum('type', ['customer', 'restaurant','admin'])->default(config('constants.USER_TYPE.VENDOR'));
             $table->string('token')->nullable();
             $table->rememberToken();
             $table->softDeletes();
