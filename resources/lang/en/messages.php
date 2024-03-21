@@ -120,6 +120,13 @@ $messages = [
             'email' => 'Invalid email format',
             'max' => 'Email should be less than 255 characters',
             'unique' => 'Email already exists',
+            'exists' => 'Email does not exist',
+        ],
+        'password' => [
+            'required' => 'Password is required',
+            'string' => 'Password should be string',
+            'min' => 'Password should be minimum 6 characters',
+            'max' => 'Password should be less than 20 characters',
         ],
         'age' => [
             'required' => 'Age is required',
