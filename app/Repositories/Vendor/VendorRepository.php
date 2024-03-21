@@ -2,8 +2,13 @@
 
 namespace App\Repositories\Vendor;
 
+use App\Mail\VerificationMail;
 use App\Models\Vendor;
+use App\Models\VerificationToken;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class VendorRepository implements VendorInterface
@@ -60,5 +65,83 @@ class VendorRepository implements VendorInterface
         $vendor->type = config('constants.TOKEN_TYPE.BEARER');
 
         return $vendor;
+    }
+
+    public function create(array $data): RedirectResponse
+    {
+        $vendor = $this->vendor->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'mobile_number' => $data['mobile_number'],
+            'type' => config('constants.USER_TYPE.VENDOR'),
+        ]);
+
+        if($vendor) {
+
+            $token = base64_encode(Str::random(60));
+            VerificationToken::create([
+                'user_type' => config('constants.USER_TYPE.VENDOR'),
+                'email' => $data['email'],
+                'token' => $token
+            ]);
+
+            $actionLink = route('vendors.verify', ['token' => $token]);
+
+            if( Mail::to($data['email'])->send(new VerificationMail($actionLink, $data['name']) )) {
+                return redirect()->route('vendors.register-success')->with('success', 'Vendor registered successfully. Please verify your email address');
+            }
+
+            return redirect()->route('vendors.register')->with('fail', 'Failed to send verification email');
+        }
+
+        return redirect()->route('vendors.register')->with('fail', 'Failed to register vendor');
+    }
+
+    public function verify(string $token): RedirectResponse
+    {
+        $verificationToken = VerificationToken::where('token', $token)->first();
+        if ($verificationToken) {
+            $vendor = $this->vendor->where('email', $verificationToken->email)->first();
+
+            if ($vendor->is_email_verified) {
+                return redirect()->route('vendors.login')
+                    ->with('info', 'Your email is already verified. Please login to continue.');
+            }
+
+            $vendor->is_email_verified = true;
+            $vendor->email_verified_at = now();
+            $vendor->is_active = true;
+            $vendor->status = config('constants.STATUS.ACTIVE');
+            $vendor->update();
+            return redirect()->route('vendors.login')
+                ->with('success', 'Email verified successfully. Please login to continue.');
+        }
+        return redirect()->route('vendors.register')->with('fail', 'Invalid token.');
+    }
+
+    public function loginHandler(array $data): array
+    {
+        if ( Auth::guard('vendor')->attempt($data) ) {
+            if ( !auth('vendor')->user()->is_email_verified && auth('vendor')->user()->status != config('constants.STATUS.ACTIVE') ){
+                auth('vendor')->logout();
+                return [
+                    'route' => 'vendors.login',
+                    'status' => 'fail',
+                    'message' => 'Please verify your email address before login. Check your email for verification link.'
+                ];
+            }
+            return [
+                'route' => 'vendors.dashboard',
+                'status' => 'success',
+                'message' => 'Logged in successfully'
+            ];
+        }
+
+        return [
+            'route' => 'vendors.login',
+            'status' => 'fail',
+            'message' => 'Invalid credentials'
+        ];
     }
 }
