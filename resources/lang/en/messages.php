@@ -238,6 +238,16 @@ $messages = [
                 'numeric' => 'Dish discount price should be numeric',
             ],
         ],
+        'category' => [
+            'name' => [
+                'required' => 'Category name is required',
+                'string' => 'Category name should be string'
+            ],
+            'status' => [
+                'required' => 'Status is required',
+                'boolean' => 'Select valid status'
+            ]
+        ]
     ],
 ];
 
