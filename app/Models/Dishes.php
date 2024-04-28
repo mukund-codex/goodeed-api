@@ -16,6 +16,8 @@ class Dishes extends Model
 
     protected $fillable = [
         'restaurant_id',
+        'category_id',
+        'subcategory_id',
         'name',
         'description',
         'is_veg',
@@ -23,12 +25,23 @@ class Dishes extends Model
         'verified',
         'image',
         'price',
-        'discount_price'
+        'discount_price',
+        'discount_percentage'
     ];
 
     public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function subcategory(): BelongsTo
+    {
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function orders(): HasMany

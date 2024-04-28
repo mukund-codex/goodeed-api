@@ -5,7 +5,7 @@ namespace App\Repositories\Restaurant;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Collection;
 
-class RestaurantRespository implements RestaurantInterface
+class RestaurantRepository implements RestaurantInterface
 {
 
     private Restaurant $restaurant;
@@ -13,6 +13,13 @@ class RestaurantRespository implements RestaurantInterface
     public function __construct(Restaurant $restaurant)
     {
         $this->restaurant = $restaurant;
+    }
+
+    public function index(int $vendorId): Collection
+    {
+        return $this->restaurant->all()
+            ->where('vendor_id', $vendorId)
+            ->sortByDesc('created_at');
     }
 
     public function list(): Collection
@@ -35,4 +42,13 @@ class RestaurantRespository implements RestaurantInterface
         return $restaurant;
     }
 
+    public function find(int $id): Restaurant
+    {
+        return $this->restaurant->find($id);
+    }
+
+    public function delete(int $id): bool
+    {
+        return $this->restaurant->find($id)->delete();
+    }
 }

@@ -24,6 +24,9 @@ class UpdateDishesRequest extends FormRequest
             'discount_price' => 'nullable|numeric',
             'is_active' => 'required|boolean',
             'is_veg' => 'required|boolean',
+            'discount_percentage' => 'nullable|numeric',
+            'category_id' => 'required|integer|exists:categories,id',
+            'subcategory_id' => 'required|integer|exists:subcategories,id',
         ];
     }
 

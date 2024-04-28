@@ -74,7 +74,7 @@ class VendorRepository implements VendorInterface
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'mobile_number' => $data['mobile_number'],
-            'type' => config('constants.USER_TYPE.VENDOR'),
+            'type' => config('constants.USER_TYPE.RESTAURANT'),
         ]);
 
         if($vendor) {

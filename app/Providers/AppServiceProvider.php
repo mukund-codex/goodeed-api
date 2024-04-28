@@ -13,7 +13,7 @@ use App\Models\Vendor;
 use App\Repositories\Address\AddressInterface;
 use App\Repositories\Address\AddressRepository;
 use App\Repositories\Restaurant\RestaurantInterface;
-use App\Repositories\Restaurant\RestaurantRespository;
+use App\Repositories\Restaurant\RestaurantRepository;
 use App\Repositories\User\UserInterface;
 use App\Repositories\User\UserRepository;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserInterface::class, UserRepository::class);
         $this->app->singleton(AddressInterface::class, AddressRepository::class);
-        $this->app->singleton(RestaurantInterface::class, RestaurantRespository::class);
+        $this->app->singleton(RestaurantInterface::class, RestaurantRepository::class);
         $this->app->singleton('DishesInterface', 'DishesRepository::class');
         $this->app->singleton('OrderInterface', 'OrderRepository::class');
         $this->app->singleton('VendorInterface', 'VendorRepository::class');

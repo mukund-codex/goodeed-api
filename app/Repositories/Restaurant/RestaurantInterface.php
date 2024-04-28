@@ -12,4 +12,10 @@ interface  RestaurantInterface
     public function create(array $data): Restaurant;
 
     public function update(array $data): Restaurant;
+
+    public function index(int $vendorId): Collection;
+
+    public function find(int $id): Restaurant;
+
+    public function delete(int $id): bool;
 }

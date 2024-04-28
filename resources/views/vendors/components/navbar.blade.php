@@ -25,8 +25,7 @@
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
                     <div class="dashboard_bar">
-                        Orders
-                        <span>Here is your order list data</span>
+                        Dashboard
                     </div>
                 </div>
                 <ul class="navbar-nav header-right">

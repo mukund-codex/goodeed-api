@@ -21,5 +21,8 @@ class Category extends Model
         return $this->hasMany(Subcategory::class);
     }
 
-
+    public function dishes(): HasMany
+    {
+        return $this->hasMany(Dishes::class);
+    }
 }

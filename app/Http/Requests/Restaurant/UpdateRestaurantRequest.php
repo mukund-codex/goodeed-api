@@ -20,6 +20,7 @@ class UpdateRestaurantRequest extends FormRequest
             'address' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required|email',
+            'is_active' => 'sometimes|boolean'
         ];
     }
 

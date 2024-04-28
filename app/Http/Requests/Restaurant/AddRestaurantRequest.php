@@ -13,11 +13,7 @@ class AddRestaurantRequest extends FormRequest
             'address' => 'required|string',
             'phone' => 'required|numeric|digits:10',
             'email' => 'required|email',
+            'is_active' => 'sometimes|boolean'
         ];
-    }
-
-    public function messages(): array
-    {
-        return trans('messages.validation');
     }
 }
