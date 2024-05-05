@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('reason_for_cancellation')->nullable();
             $table->string('cancellation_by')->nullable();
             $table->enum('rating', ['1', '2', '3', '4', '5'])->nullable();
-            $table->enum('cancellation_status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('cancellation_status', ['pending', 'approved', 'rejected', 'null'])->default('null');
             $table->string('review')->nullable();
             $table->softDeletes();
             $table->timestamps();
