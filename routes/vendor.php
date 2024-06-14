@@ -9,7 +9,7 @@ use App\Http\Controllers\vendors\VendorController;
 Route::prefix('vendors')->name('vendors.')->group(function () {
 
     Route::middleware([])->group(function () {
-        Route::post('/login', [VendorController::class, 'login'])->name('login');
+        Route::get('/login', [VendorController::class, 'login'])->name('login');
         Route::post('/login-handler', [VendorController::class, 'loginHandler'])->name('login-handler');
         Route::view('/register', 'vendors.auth.register')->name('register');
         Route::post('/create', [VendorController::class, 'create'])->name('create');
