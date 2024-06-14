@@ -32,7 +32,8 @@ class DishesRepository implements DishesInterface
     public function list(int $id): Collection
     {
         return $this->dishes->where('restaurant_id', $id)
-            ->where('is_active', 1)->where('verified', 1)
+            ->where('is_active', 1)
+//            ->where('verified', 1)
             ->with('restaurant')
             ->with('category')
             ->with('subcategory')
