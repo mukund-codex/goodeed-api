@@ -26,7 +26,7 @@ class RestaurantRepository implements RestaurantInterface
     {
         return $this->restaurant
             ->where('is_active', true)
-            ->where('verified', true)
+//            ->where('verified', true)
             ->get();
     }
 
