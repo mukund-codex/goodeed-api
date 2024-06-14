@@ -3,10 +3,13 @@
 namespace App\Repositories\Vendor;
 
 use App\Mail\VerificationMail;
+use App\Models\Dishes;
+use App\Models\Order;
 use App\Models\Vendor;
 use App\Models\VerificationToken;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -143,5 +146,43 @@ class VendorRepository implements VendorInterface
             'status' => 'fail',
             'message' => 'Invalid credentials'
         ];
+    }
+
+    public function dashboard(): array
+    {
+        $dashboard = [];
+        // Total Menus
+        $vendorId = Auth::guard('vendor')->user()->id;
+        $dashboard['total_menus'] = Dishes::select('DISTINCT (dishes.id) as total_menus')
+                        ->join('restaurants', 'dishes.restaurant_id', '=', 'restaurants.id')
+                        ->where('restaurants.vendor_id', $vendorId)
+                        ->count();
+
+        // Total Orders
+        $dashboard['total_orders'] = Order::select('DISTINCT (orders.id) as total_orders')
+                        ->join('restaurants', 'orders.restaurant_id', '=', 'restaurants.id')
+                        ->where('restaurants.vendor_id', $vendorId)
+                        ->count();
+
+        // Total Revenue
+        $totalRev = Order::select(DB::raw('SUM(orders.total_price::numeric) as total_revenue'))
+                        ->join('restaurants', 'orders.restaurant_id', '=', 'restaurants.id')
+                        ->where('restaurants.vendor_id', $vendorId)
+                        ->where('orders.cancelled_at', null)
+                        ->where('orders.status', 'completed')
+                        ->orWhere('orders.status', 'delivered')
+                        ->first();
+        $dashboard['total_revenue'] = $totalRev['total_revenue'];
+
+        // Total Customers
+        $dashboard['total_customers'] = Order::select('DISTINCT (orders.user_id) as total_customers')
+                        ->join('restaurants', 'orders.restaurant_id', '=', 'restaurants.id')
+                        ->where('restaurants.vendor_id', $vendorId)
+                        ->count();
+
+        // Order Summary
+        // Trending Menus
+
+        return $dashboard;
     }
 }

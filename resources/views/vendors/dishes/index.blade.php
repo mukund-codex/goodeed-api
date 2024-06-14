@@ -69,7 +69,7 @@
                             @php $i = 1; @endphp
                             @foreach($dishes as $key => $dish)
                                 <tr class="alert alert-dismissible border-0" style="text-align: center;">
-                                    <td>{{ $i }} {{ $dish['dishes'] }}</td>
+                                    <td>{{ $i }}</td>
                                     <td>{{ $dish['restaurant']['name'] }}</td>
                                     <td>{{ $dish['category']['name'] }}</td>
                                     <td>{{ $dish['subcategory']['name'] }}</td>

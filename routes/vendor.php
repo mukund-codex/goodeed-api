@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\vendors\DishesController;
+use App\Http\Controllers\vendors\OrderController;
 use App\Http\Controllers\vendors\RestaurantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\vendors\VendorController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\vendors\VendorController;
 Route::prefix('vendors')->name('vendors.')->group(function () {
 
     Route::middleware([])->group(function () {
-        Route::view('/login', 'vendors.auth.login')->name('login');
+        Route::post('/login', [VendorController::class, 'login'])->name('login');
         Route::post('/login-handler', [VendorController::class, 'loginHandler'])->name('login-handler');
         Route::view('/register', 'vendors.auth.register')->name('register');
         Route::post('/create', [VendorController::class, 'create'])->name('create');
@@ -17,7 +18,7 @@ Route::prefix('vendors')->name('vendors.')->group(function () {
     });
 
     Route::middleware([])->group(function () {
-        Route::view('/dashboard', 'vendors.dashboard')->name('dashboard');
+        Route::get('/dashboard', [VendorController::class, 'dashboard'])->name('dashboard');
         Route::post('/logout-handler', [VendorController::class, 'logoutHandler'])->name('logout-handler');
 
         // Restaurants Routes
@@ -38,6 +39,13 @@ Route::prefix('vendors')->name('vendors.')->group(function () {
         Route::get('/dishes/delete/{id}', [DishesController::class, 'delete'])->name('dishes.delete');
 
         Route::post('/get-subcategories', [DishesController::class, 'getSubcategories'])->name('get-subcategories');
+
+        // Orders Routes
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('orders.show');
+        Route::get('/orders/accept/{id}', [OrderController::class, 'accept'])->name('orders.accept');
+        Route::get('/orders/reject/{id}', [OrderController::class, 'reject'])->name('orders.reject');
+        Route::get('/orders/complete/{id}', [OrderController::class, 'complete'])->name('orders.complete');
 
     });
 

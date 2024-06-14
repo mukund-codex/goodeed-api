@@ -17,4 +17,6 @@ interface VendorInterface
 
     public function verify(string $token): RedirectResponse;
 
+    public function dashboard(): array;
+
 }

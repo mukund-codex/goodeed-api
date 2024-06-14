@@ -16,4 +16,11 @@ interface  OrderInterface
 
     public function getOrder(int $id): Order;
 
+    public function index(): Collection|array;
+
+    public function accept(int $id): Order;
+
+    public function reject(int $id): Order;
+
+    public function complete(int $id): Order;
 }

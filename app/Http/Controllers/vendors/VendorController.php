@@ -7,6 +7,8 @@ use App\Http\Requests\Vendor\LoginRequest;
 use App\Http\Requests\Vendor\PanelLoginRequest;
 use App\Http\Requests\Vendor\RegisterRequest;
 use App\Repositories\Vendor\VendorRepository;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,9 +23,24 @@ class VendorController extends Controller
         $this->vendor = $vendor;
     }
 
+    public function login(): RedirectResponse|Application|Factory|View
+    {
+        if(isset(Auth::guard('vendor')->user()->id)) {
+            $dashboard = $this->vendor->dashboard();
+            return redirect()->route('vendors.dashboard', compact('dashboard'));
+        }
+        return view('vendors.auth.login');
+    }
+
     public function registerSuccess(): View
     {
         return view('vendors.auth.register-success');
+    }
+
+    public function dashboard(): View
+    {
+        $dashboard = $this->vendor->dashboard();
+        return view('vendors.dashboard', compact('dashboard'));
     }
 
     public function create(RegisterRequest $request): RedirectResponse

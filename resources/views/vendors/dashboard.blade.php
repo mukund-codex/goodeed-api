@@ -71,7 +71,7 @@
                         <div class="card-body">
                             <div class="media align-items-center">
                                 <div class="media-body me-2">
-                                    <h2 class="text-white font-w600">459</h2>
+                                    <h2 class="text-white font-w600">{{ $dashboard['total_menus'] }}</h2>
                                     <span class="text-white">Total Menus</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
@@ -94,15 +94,13 @@
                         <div class="card-body">
                             <div class="media align-items-center">
                                 <div class="media-body me-2">
-                                    <h2 class="text-white font-w600">$ 87,561</h2>
+                                    <h2 class="text-white font-w600">&#8377; {{ $dashboard['total_revenue'] }}</h2>
                                     <span class="text-white">Total Revenue</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
                                     <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0)"],   "innerRadius": 41, "radius": 10}'>3/8</span>
                                     <small class="text-primary">
-                                        <svg width="20" height="36" viewbox="0 0 20 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.08 24.36C19.08 25.64 18.76 26.8667 18.12 28.04C17.48 29.1867 16.5333 30.1467 15.28 30.92C14.0533 31.6933 12.5733 32.1333 10.84 32.24V35.48H8.68V32.24C6.25333 32.0267 4.28 31.2533 2.76 29.92C1.24 28.56 0.466667 26.84 0.44 24.76H4.32C4.42667 25.88 4.84 26.8533 5.56 27.68C6.30667 28.5067 7.34667 29.0267 8.68 29.24V19.24C6.89333 18.7867 5.45333 18.32 4.36 17.84C3.26667 17.36 2.33333 16.6133 1.56 15.6C0.786667 14.5867 0.4 13.2267 0.4 11.52C0.4 9.36 1.14667 7.57333 2.64 6.16C4.16 4.74666 6.17333 3.96 8.68 3.8V0.479998H10.84V3.8C13.1067 3.98667 14.9333 4.72 16.32 6C17.7067 7.25333 18.5067 8.89333 18.72 10.92H14.84C14.7067 9.98667 14.2933 9.14667 13.6 8.4C12.9067 7.62667 11.9867 7.12 10.84 6.88V16.64C12.6 17.0933 14.0267 17.56 15.12 18.04C16.24 18.4933 17.1733 19.2267 17.92 20.24C18.6933 21.2533 19.08 22.6267 19.08 24.36ZM4.12 11.32C4.12 12.6267 4.50667 13.6267 5.28 14.32C6.05333 15.0133 7.18667 15.5867 8.68 16.04V6.8C7.29333 6.93333 6.18667 7.38667 5.36 8.16C4.53333 8.90667 4.12 9.96 4.12 11.32ZM10.84 29.28C12.28 29.12 13.4 28.6 14.2 27.72C15.0267 26.84 15.44 25.7867 15.44 24.56C15.44 23.2533 15.04 22.2533 14.24 21.56C13.44 20.84 12.3067 20.2667 10.84 19.84V29.28Z" fill="#EA7A9A"></path>
-                                        </svg>
+                                        <span style="font-size: 35px;">&#8377; </span>
                                     </small>
                                     <span class="circle bg-white"></span>
                                 </div>
@@ -115,8 +113,8 @@
                         <div class="card-body">
                             <div class="media align-items-center">
                                 <div class="media-body me-2">
-                                    <h2 class="text-white font-w600">247</h2>
-                                    <span class="text-white">Total Oders</span>
+                                    <h2 class="text-white font-w600">{{ $dashboard['total_orders'] }}</h2>
+                                    <span class="text-white">Total Orders</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
                                     <span class="donut1" data-peity='{ "fill": ["rgb(255, 255, 255)", "rgba(255, 255, 255, 0)"],   "innerRadius": 41, "radius": 10}'>4/8</span>
@@ -139,7 +137,7 @@
                         <div class="card-body">
                             <div class="media align-items-center">
                                 <div class="media-body me-2">
-                                    <h2 class="text-white font-w600">872</h2>
+                                    <h2 class="text-white font-w600">{{ $dashboard['total_customers'] }}</h2>
                                     <span class="text-white">Total Customers</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
@@ -157,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6">
+                <div class="col-xl-9 col-xxl-8">
                     <div class="card">
                         <div class="card-header d-sm-flex flex-wrap d-block pb-0 border-0">
                             <div class="me-auto pe-3">
@@ -289,170 +287,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-header d-sm-flex d-block pb-0 border-0">
-                            <div class="me-auto pe-3">
-                                <h4 class="text-black fs-20">Revenue</h4>
-                                <p class="fs-13 mb-0 text-black">Lorem ipsum dolor sit amet, consectetur</p>
-                            </div>
-
-                            <select class="form-control style-2 default-select mb-3">
-                                <option>Monthly</option>
-                                <option>Weekly</option>
-                                <option>Daily</option>
-                            </select>
-                        </div>
-                        <div class="card-body" id="user-activity">
-                            <div class="d-flex flex-wrap mb-4">
-                                <div class="me-auto mb-2 pe-3 d-flex align-items-center">
-                                    <svg width="25" height="26" viewbox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="3.54545" height="26" rx="1.77273" fill="#EA7A9A"></rect>
-                                        <rect x="7.09088" y="7.09082" width="3.54545" height="18.9091" rx="1.77273" fill="#EA7A9A"></rect>
-                                        <rect x="14.1819" y="17.7271" width="3.54545" height="8.27273" rx="1.77273" fill="#EA7A9A"></rect>
-                                        <rect x="21.2727" y="3.54541" width="3.54545" height="22.4545" rx="1.77273" fill="#EA7A9A"></rect>
-                                    </svg>
-                                    <div class="ms-3">
-                                        <p class="fs-12 mb-1">Income</p>
-                                        <span class="fs-22 text-black font-w600">$126,000</span>
-                                    </div>
-                                </div>
-                                <div class="card-action revenue-tabs">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" data-bs-toggle="tab" href="#user" role="tab" aria-selected="true">
-                                                All Food
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#bounce" role="tab" aria-selected="false">
-                                                Food
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#session-duration" role="tab" aria-selected="false">
-                                                Beverages
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" role="tabpanel">
-                                    <canvas id="activityLine" height="300"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-9 col-xxl-8">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-header d-sm-flex d-block pb-0 border-0">
-                                    <div class="me-auto pe-3">
-                                        <h4 class="text-black fs-20">Customer Map</h4>
-                                        <p class="fs-13 mb-0 text-black">Lorem ipsum dolor sit amet, consectetur</p>
-                                    </div>
-                                    <div class="card-action card-tabs mt-3 mt-sm-0 mt-3 mb-sm-0 mb-3 mt-sm-0">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-selected="true">
-                                                    Monthly
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab" aria-selected="false">
-                                                    Weekly
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" data-bs-toggle="tab" href="#tab3" role="tab" aria-selected="false">
-                                                    Today
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card-body pb-0">
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="tab1">
-                                            <div id="chartTimeline"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab2">
-                                            <div id="chartTimeline2"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab3">
-                                            <div id="chartTimeline3"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-xxl-12 col-lg-8">
-                            <div class="card">
-                                <div class="card-header border-0 pb-0">
-                                    <h4 class="text-black fs-20 mb-0">Transactions Summary</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-sm-0 mb-3">
-                                            <div class="media align-items-center">
-                                                <div class="d-inline-block me-3 position-relative donut-chart-sale2">
-                                                    <span class="donut2" data-peity='{ "fill": ["rgb(84, 205, 81)", "rgba(255, 255, 255, 1)"],   "innerRadius": 27, "radius": 10}'>6/8</span>
-                                                    <small class="text-black">
-                                                        86%
-                                                    </small>
-                                                </div>
-                                                <div>
-                                                    <h4 class="fs-28 font-w600 text-black mb-0">585</h4>
-                                                    <span>Succesfull Order</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="media align-items-center">
-                                                <div class="d-inline-block me-3 position-relative donut-chart-sale2">
-                                                    <span class="donut2" data-peity='{ "fill": ["rgb(255, 55, 112)", "rgba(255, 255, 255, 1)"],   "innerRadius": 27, "radius": 10}'>3/8</span>
-                                                    <small class="text-black">
-                                                        14%
-                                                    </small>
-                                                </div>
-                                                <div>
-                                                    <h4 class="fs-28 font-w600 text-black mb-0">165</h4>
-                                                    <span>Unsuccesfull Order</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-xxl-12 col-lg-4">
-                            <div class="card">
-                                <div class="card-header border-0 pb-0">
-                                    <h4 class="text-black fs-20 mb-0">Average</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="d-flex align-items-end">
-                                        <div>
-                                            <h4 class="fs-28 font-w600 text-black mb-0">87,456</h4>
-                                            <span>Order</span>
-                                        </div>
-                                        <canvas class="lineChart" id="chart_widget_2" height="85"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xl-3 col-xxl-4">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card trending-menus">
                                 <div class="card-header d-sm-flex d-block pb-0 border-0">
                                     <div>
-                                        <h4 class="text-black fs-20">Daily Trending Menus</h4>
+                                        <h4 class="text-black fs-20">Trending Menus</h4>
                                         <p class="fs-13 mb-0 text-black">Lorem ipsum dolor</p>
                                     </div>
                                 </div>

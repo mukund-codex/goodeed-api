@@ -38,6 +38,7 @@ class Order extends Model
         'order_type',
         'order_placed_at',
         'accepted_at',
+        'rejected_at',
         'preparing_at',
         'dispatched_at',
         'delivered_at',

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Restaurant\AddRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
 use App\Http\Traits\ApiResponseTrait;
-use App\Repositories\Restaurant\RestaurantRespository;
+use App\Repositories\Restaurant\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class RestaurantController extends Controller
 {
     use ApiResponseTrait;
 
-    private RestaurantRespository $restaurant;
+    private RestaurantRepository $restaurant;
 
-    public function __construct(RestaurantRespository $restaurant)
+    public function __construct(RestaurantRepository $restaurant)
     {
         $this->restaurant = $restaurant;
     }

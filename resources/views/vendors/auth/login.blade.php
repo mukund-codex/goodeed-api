@@ -71,7 +71,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="text-center mt-4">
+                                        <div class>
                                             <button type="submit" name="submit" class="btn btn-primary btn-block">Login</button>
                                         </div>
                                     </form>

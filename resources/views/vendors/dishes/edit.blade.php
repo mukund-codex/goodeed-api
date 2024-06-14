@@ -36,6 +36,7 @@
                 <!-- Add Category Form -->
                 <form method="POST" action="{{ route('vendors.dishes.update', ['id' => $dish['id']]) }}">
                     @csrf
+                    @include('common.form-alert')
                     <div class="form-group mb-3">
                         <label class="text-black font-w500" for="restaurant_id">Restaurant</label>
                         <select class="form-control" name="restaurant_id" id="restaurant_id">
